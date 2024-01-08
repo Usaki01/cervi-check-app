@@ -4,12 +4,13 @@ st.set_page_config(page_title="Cervical Cancer Asserment", page_icon=":memo:")
 
 st.title("Assessment Demo")
 st.sidebar.header("แบบประเมินมะเร็งปากมดลูก")
-st.sidebar.write("อธิบายแบบประเมิน......")
+st.sidebar.write("คำอธิบายแบบประเมิน")
 st.subheader("ข้อมูลทั่วไป")
 age = st.number_input("กรอกอายุของท่าน", min_value= 0, max_value=100, value=0, placeholder="โปรดใส่อายุของท่าน...")
 st.write('อายุของท่านคือ ', age, 'ปี')
 st.write("---------------------------------------------------")
 
+st.subheader("ข้อมูลสุขภาพ")
 use = st.radio(
     "เคยปวดท้องประจำเดือนหรือไม่",
     ["ไม่เคย", "เป็นบางครั้ง", "ทุกครั้ง"],
