@@ -3,5 +3,3 @@ streamlit_extras
 joblib
 streamlit_modal
 numpy
-sklearn
-sklearn.svm
