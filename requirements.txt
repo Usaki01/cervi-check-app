@@ -1,3 +1,4 @@
 streamlit
 streamlit_extras
 joblib
+streamlit_modal
