@@ -3,7 +3,7 @@ from streamlit_extras.switch_page_button import switch_page
 import joblib
 import numpy as np
 from Home import defaults
-#from sklearn import 
+from sklearn.svm import OneClassSVM
 
 if 'age' not in st.session_state:
     defaults()
