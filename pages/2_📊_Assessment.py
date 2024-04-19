@@ -4,7 +4,7 @@ import numpy as np
 from streamlit_extras.switch_page_button import switch_page
 from Home import defaults
 
-st.set_page_config(initial_sidebar_state="collapsed")
+#st.set_page_config(initial_sidebar_state="collapsed")
 st.markdown(
     """
 <style>

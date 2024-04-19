@@ -5,7 +5,7 @@ from streamlit_extras.switch_page_button import switch_page
 from streamlit_modal import Modal
 from Home import defaults
 
-st.set_page_config(initial_sidebar_state="collapsed")
+#st.set_page_config(initial_sidebar_state="collapsed")
 st.markdown(
     """
 <style>
