@@ -3,6 +3,7 @@ from streamlit_extras.switch_page_button import switch_page
 import joblib
 import numpy as np
 from Home import defaults
+import sklearn
 
 if 'age' not in st.session_state:
     defaults()
