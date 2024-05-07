@@ -3,17 +3,6 @@ from streamlit_extras.switch_page_button import switch_page
 from Home import defaults
 #st.set_page_config(page_title="Cervical Cancer Asserment", page_icon=":memo:")
 
-st.set_page_config(
-    page_title="Cervical Cancer Risk Assessment",
-    page_icon=":ribbon:",
-    #layout="wide", # or centered (auto)
-    initial_sidebar_state="collapsed", # or auto/expanded
-    menu_items={
-        'Report a bug': "https://www.facebook.com/profile.php?id=100007066686160",
-        'About': '''เว็บแอพพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา *Senior Project* ของนักศึกษาปี 4 คณะวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี 
-                \n **แบบประเมินนี้เป็นเพียงแนวทางในการประเมินความเสี่ยงโรคมะเร็งปากมดลูกเบื้องต้น หากมีข้อสงสัยหรือความกังวล ควรปรึกษาแพทย์ผู้เชี่ยวชาญ** '''
-    },
-)
 
 
 st.markdown(
