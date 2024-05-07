@@ -4,6 +4,30 @@ import joblib
 import numpy as np
 from Home import defaults
 
+st.set_page_config(
+    page_icon=":ribbon:",
+    #layout="wide", # or centered (auto)
+    initial_sidebar_state="collapsed", # or auto/expanded
+    menu_items={
+        'Get Help': 'sasitorn.kratai@mail.kmutt.ac.th',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': '''เว็บแอพพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา *Senior Project* ของนักศึกษาปี 4 คณะวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี 
+                \n **แบบประเมินนี้เป็นเพียงแนวทางในการประเมินความเสี่ยงโรคมะเร็งปากมดลูกเบื้องต้น หากมีข้อสงสัยหรือความกังวล ควรปรึกษาแพทย์ผู้เชี่ยวชาญ** '''
+    },
+)
+
+
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
 if 'age' not in st.session_state:
     defaults()
 

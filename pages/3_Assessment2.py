@@ -5,7 +5,19 @@ from streamlit_extras.switch_page_button import switch_page
 from streamlit_modal import Modal
 from Home import defaults
 
-#st.set_page_config(initial_sidebar_state="collapsed")
+st.set_page_config(
+    page_icon=":ribbon:",
+    #layout="wide", # or centered (auto)
+    initial_sidebar_state="collapsed", # or auto/expanded
+    menu_items={
+        'Get Help': 'sasitorn.kratai@mail.kmutt.ac.th',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': '''เว็บแอพพลิเคชันนี้เป็นส่วนหนึ่งของรายวิชา *Senior Project* ของนักศึกษาปี 4 คณะวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี 
+                \n **แบบประเมินนี้เป็นเพียงแนวทางในการประเมินความเสี่ยงโรคมะเร็งปากมดลูกเบื้องต้น หากมีข้อสงสัยหรือความกังวล ควรปรึกษาแพทย์ผู้เชี่ยวชาญ** '''
+    },
+)
+
+
 st.markdown(
     """
 <style>
@@ -201,7 +213,7 @@ if modal.is_open():
         columns_submit_final = st.columns((2, 1, 2))
         button_submit_final = columns_submit_final[1].button('ยืนยัน', type="primary",key='submit_last')
         if button_submit_final:
-            switch_page("infomation")
+            switch_page("result")
 
 #---------------------------------------------------------
 
