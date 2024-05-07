@@ -37,7 +37,7 @@ for key in st.session_state.KEEPERS:
 #Machine Learning Function
 def load_and_pre(input_data):
     #load the pre-trained model
-    model = joblib.load('isolation_forest_model.pkl')
+    model = joblib.load('isolation_forest_model2.pkl')
 
     #Assuming input_data is a NumPy array or a list
     input_data = np.array(input_data).reshape(1,-1)
