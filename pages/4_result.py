@@ -211,7 +211,7 @@ predictions = load_and_pre(input_data_web)
 
 #Visual Result by Predictions
 #if np.all(predictions == 'C (CIN 2-3 or AIS)' or predictions == 'D (Invasive cervical carcinoma)'):  ##If use testing_oneclasssvm.pkl
-if predictions == 1 : #If use testing_oneclasssvm_rbf.pkl or testing_oneclasssvm_linear.pkl
+if predictions == -1 : #If use testing_oneclasssvm_rbf.pkl or testing_oneclasssvm_linear.pkl
     st.markdown("## ท่านมีความเสี่ยงสูงที่จะเป็นมะเร็งปากมดลูก")
     st.write("อย่างไรก็ตาม นั้นยังไม่ได้หมายความว่าท่านเป็นมะเร็งปากมดลูก แต่เนื่องจากท่านมีพฤติกรรมเสี่ยงและอาการที่อาจบ่งถึงมะเร็งปากมดลูกได้ แนะนำพบแพทย์เพื่อ**รับการตรวจภายในและตรวจคัดกรองมะเร็งปากมดลูกทันที** ")
     st.write("โดยท่านสามารถใช้สิทธิการตรวจได้ ตามสิทธิการรักษาของท่าน")
