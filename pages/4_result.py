@@ -252,7 +252,7 @@ data = {
 # เพิ่มรายการข้อมูลลงใน DataFrame
 df.loc[len(df)] = data
 
-st.write(df)
+#st.write(df)
 
 
 #Use Machine Learning Function
