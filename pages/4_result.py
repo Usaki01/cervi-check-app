@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 import joblib
 import numpy as np
+import pandas as pd
 from Home import defaults
 
 st.set_page_config(
@@ -37,7 +38,7 @@ for key in st.session_state.KEEPERS:
 #Machine Learning Function
 def load_and_pre(input_data):
     #load the pre-trained model
-    model = joblib.load('isolation_forest_model2.pkl')
+    model = joblib.load('isolation_forest_model_finail.pkl')
 
     #Assuming input_data is a NumPy array or a list
     input_data = np.array(input_data).reshape(1,-1)
@@ -70,6 +71,11 @@ if st.session_state.excrete == "ปกติ (ขับถ่ายปกติ�
     cal_excrete = 1
 elif st.session_state.excrete == "ขับถ่ายไม่ปกติ(ท้องเสีย ถ่ายแข็ง)":
     cal_excrete = 2
+#------------------------------------------------------------------------------
+if st.session_state.menses_age == "99":
+    st.session_state.menses_age = 14  # median
+else:
+    num = int(st.session_state.menses_age)
 #------------------------------------------------------------------------------
 if st.session_state.status == "โสด":
     cal_status = 1
@@ -194,18 +200,72 @@ elif st.session_state.pus == "เคย":
 #------------------------------------------------------------------------------
 
 
+#create DataFrame from list
+df = pd.DataFrame(columns=['age', 'menses_age', 'cal_pills', 'cal_sex', 'sex_age', 'cal_sex_partner', 'cal_protection', 'cal_protection_now', 'cal_pregnancy', 'cal_hpv_check', 'cal_sex_pain', 'cal_sex_blood', 'cal_cervical_blood', 'cal_pelvic_pain', 'cal_vagina_discharge', 'cal_vagina_discharge_char', 'cal_irritation', 'cal_tumor', 'cal_wart', 'cal_herpes', 'cal_syphilis', 'cal_pus', 'cigarette_0', 'cigarette_1', 'cigarette_2', 'cigarette_3', 'alcohol_0', 'alcohol_1', 'alcohol_2', 'alcohol_3', 'excrete_1', 'excrete_2', 'status_1', 'status_2', 'status_3','menses_1', 'menses_2', 'menses_char_1', 'menses_char_2', 'condom_0', 'condom_1', 'condom_2', 'condom_9'])
+
+data = {
+    'age': st.session_state.age,
+    'menses_age': st.session_state.menses_age,
+    'cal_pills': cal_pills,
+    'cal_sex': cal_sex,
+    'sex_age': st.session_state.sex_age,
+    'cal_sex_partner': cal_sex_partner,
+    'cal_protection': cal_protection,
+    'cal_protection_now': cal_protection_now,
+    'cal_pregnancy': cal_pregnancy,
+    'cal_hpv_check': cal_hpv_check,
+    'cal_sex_pain': cal_sex_pain,
+    'cal_sex_blood': cal_sex_blood,
+    'cal_cervical_blood': cal_cervical_blood,
+    'cal_pelvic_pain': cal_pelvic_pain,
+    'cal_vagina_discharge': cal_vagina_discharge,
+    'cal_vagina_discharge_char': cal_vagina_discharge_char,
+    'cal_irritation': cal_irritation,
+    'cal_tumor': cal_tumor,
+    'cal_wart': cal_wart,
+    'cal_herpes': cal_herpes,
+    'cal_syphilis': cal_syphilis,
+    'cal_pus': cal_pus,
+    'cigarette_0': 1 if cal_cigarette == 0 else 0,
+    'cigarette_1': 1 if cal_cigarette == 1 else 0,
+    'cigarette_2': 1 if cal_cigarette == 2 else 0,
+    'cigarette_3': 1 if cal_cigarette == 3 else 0,
+    'alcohol_0': 1 if cal_alcohol == 0 else 0,
+    'alcohol_1': 1 if cal_alcohol == 1 else 0,
+    'alcohol_2': 1 if cal_alcohol == 2 else 0,
+    'alcohol_3': 1 if cal_alcohol == 3 else 0,
+    'excrete_1': 1 if cal_excrete == 1 else 0,
+    'excrete_2': 1 if cal_excrete == 2 else 0,
+    'status_1': 1 if cal_status == 1 else 0,
+    'status_2': 1 if cal_status == 2 else 0,
+    'status_3': 1 if cal_status == 3 else 0,
+    'menses_1': 1 if cal_menses == 1 else 0,
+    'menses_2': 1 if cal_menses == 2 else 0,
+    'menses_char_1': 1 if cal_menses_char == 1 else 0,
+    'menses_char_2': 1 if cal_menses_char == 2 else 0,
+    'condom_0': 1 if cal_condom == 0 else 0,
+    'condom_1': 1 if cal_condom == 1 else 0,
+    'condom_2': 1 if cal_condom == 2 else 0,
+    'condom_9': 1 if cal_condom == 9 else 0
+}
+
+# เพิ่มรายการข้อมูลลงใน DataFrame
+df.loc[len(df)] = data
+
+
 #Use Machine Learning Function
-input_data_web = [st.session_state.age,cal_cigarette,cal_alcohol,cal_excrete,cal_status,st.session_state.menses_age,cal_menses,
-                  cal_pills,cal_menses_char,cal_sex,st.session_state.sex_age,cal_sex_partner,cal_protection,cal_protection_now,
-                  cal_pregnancy,cal_condom,cal_hpv_check,cal_sex_pain,cal_sex_blood,cal_cervical_blood,cal_pelvic_pain,
-                  cal_vagina_discharge,cal_vagina_discharge_char,cal_irritation,cal_tumor,cal_wart,cal_herpes,cal_syphilis,cal_pus]
+#create list of data
+#list_data = [st.session_state.age,cal_cigarette,cal_alcohol,cal_excrete,cal_status,st.session_state.menses_age,cal_menses,
+                  #cal_pills,cal_menses_char,cal_sex,st.session_state.sex_age,cal_sex_partner,cal_protection,cal_protection_now,
+                  #cal_pregnancy,cal_condom,cal_hpv_check,cal_sex_pain,cal_sex_blood,cal_cervical_blood,cal_pelvic_pain,
+                  #cal_vagina_discharge,cal_vagina_discharge_char,cal_irritation,cal_tumor,cal_wart,cal_herpes,cal_syphilis,cal_pus]
 #input_data_web = [st.session_state.age,st.session_state.cal_cigarette,st.session_state.cal_alcohol,st.session_state.cal_excrete,st.session_state.cal_status,
                   #st.session_state.menses_age,st.session_state.cal_menses,st.session_state.cal_pills,st.session_state.cal_menses_char,st.session_state.cal_sex,
                   #st.session_state.sex_age,st.session_state.cal_sex_partner,st.session_state.cal_protection,st.session_state.cal_protection_now,st.session_state.cal_pregnancy,
                   #st.session_state.cal_condom,st.session_state.cal_hpv_check,st.session_state.cal_sex_pain,st.session_state.cal_sex_blood,st.session_state.cal_cervical_blood,
                   #st.session_state.cal_pelvic_pain,st.session_state.cal_vagina_discharge,st.session_state.cal_irritation,st.session_state.cal_tumor,
                   #st.session_state.cal_wart,st.session_state.cal_herpes,st.session_state.cal_syphilis,st.session_state.cal_pus]
-predictions = load_and_pre(input_data_web)
+predictions = load_and_pre(df)
 #st.write(f'การทำนาย: {predictions}')
 
 
