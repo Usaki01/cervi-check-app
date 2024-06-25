@@ -38,7 +38,7 @@ for key in st.session_state.KEEPERS:
 #Machine Learning Function
 def load_and_pre(input_data):
     #load the pre-trained model
-    model = joblib.load('isolation_forest_model_finail.pkl')
+    model = joblib.load('isolation_forest_model_final.pkl')
 
     #Assuming input_data is a NumPy array or a list
     input_data = np.array(input_data).reshape(1,-1)
@@ -249,30 +249,18 @@ data = {
     'condom_9': 1 if cal_condom == 9 else 0
 }
 
-# เพิ่มรายการข้อมูลลงใน DataFrame
+#Add Data in DataFrame
 df.loc[len(df)] = data
 
 #st.write(df)
 
 
 #Use Machine Learning Function
-#create list of data
-#list_data = [st.session_state.age,cal_cigarette,cal_alcohol,cal_excrete,cal_status,st.session_state.menses_age,cal_menses,
-                  #cal_pills,cal_menses_char,cal_sex,st.session_state.sex_age,cal_sex_partner,cal_protection,cal_protection_now,
-                  #cal_pregnancy,cal_condom,cal_hpv_check,cal_sex_pain,cal_sex_blood,cal_cervical_blood,cal_pelvic_pain,
-                  #cal_vagina_discharge,cal_vagina_discharge_char,cal_irritation,cal_tumor,cal_wart,cal_herpes,cal_syphilis,cal_pus]
-#input_data_web = [st.session_state.age,st.session_state.cal_cigarette,st.session_state.cal_alcohol,st.session_state.cal_excrete,st.session_state.cal_status,
-                  #st.session_state.menses_age,st.session_state.cal_menses,st.session_state.cal_pills,st.session_state.cal_menses_char,st.session_state.cal_sex,
-                  #st.session_state.sex_age,st.session_state.cal_sex_partner,st.session_state.cal_protection,st.session_state.cal_protection_now,st.session_state.cal_pregnancy,
-                  #st.session_state.cal_condom,st.session_state.cal_hpv_check,st.session_state.cal_sex_pain,st.session_state.cal_sex_blood,st.session_state.cal_cervical_blood,
-                  #st.session_state.cal_pelvic_pain,st.session_state.cal_vagina_discharge,st.session_state.cal_irritation,st.session_state.cal_tumor,
-                  #st.session_state.cal_wart,st.session_state.cal_herpes,st.session_state.cal_syphilis,st.session_state.cal_pus]
 predictions = load_and_pre(df)
 #st.write(f'การทำนาย: {predictions}')
 
 
 #Visual Result by Predictions
-#if np.all(predictions == 'C (CIN 2-3 or AIS)' or predictions == 'D (Invasive cervical carcinoma)'):  ##If use testing_oneclasssvm.pkl
 if predictions == -1 : #If use testing_oneclasssvm_rbf.pkl or testing_oneclasssvm_linear.pkl
     st.markdown("## ท่านมีความเสี่ยงสูงที่จะเป็นมะเร็งปากมดลูก")
     st.write("อย่างไรก็ตาม นั้นยังไม่ได้หมายความว่าท่านเป็นมะเร็งปากมดลูก แต่เนื่องจากท่านมีพฤติกรรมเสี่ยงและอาการที่อาจบ่งถึงมะเร็งปากมดลูกได้ แนะนำพบแพทย์เพื่อ**รับการตรวจภายในและตรวจคัดกรองมะเร็งปากมดลูกทันที** ")

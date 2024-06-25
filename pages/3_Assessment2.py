@@ -214,11 +214,3 @@ if modal.is_open():
         button_submit_final = columns_submit_final[1].button('ยืนยัน', type="primary",key='submit_last')
         if button_submit_final:
             switch_page("result")
-
-#---------------------------------------------------------
-
-        
-    #if any(value is None or value == 0 for key, value in st.session_state.items() if key in defaults().KEEPERS):
-        #st.write('ok')
-    #else:
-        #st.write('โปรดกรอกข้อมูล')

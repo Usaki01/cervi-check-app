@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from Home import defaults
-#st.set_page_config(page_title="Cervical Cancer Asserment", page_icon=":memo:")
 
 st.set_page_config(
     page_title="Cervical Cancer Risk Assessment",

@@ -139,12 +139,6 @@ st.write(st.session_state.hpv_check)
 st.write("---------------------------------------------------")
 
 
-#style = "<style>.row-widget.stButton {text-align: right;}</style>"
-#st.markdown(style, unsafe_allow_html=True)
-
-#with st.empty():
-    #if st.button("click me"):
-        #st.button("clicked!")
 
 #Button Previous and Next
 columns_pre_next = st.columns((1,2,2,1))

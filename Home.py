@@ -81,5 +81,3 @@ columns_test = st.columns((2, 2, 2))
 button_test = columns_test[1].button("เริ่มทำแบบประเมิน", type="primary", use_container_width=True)
 if button_test:
     switch_page("cervical cancer risk assessment")
-
-#st.write("หมายเหตุ: แบบประเมินนี้เป็นเพียงแนวทางในการประเมินความเสี่ยงโรคมะเร็งปากมดลูกเบื้องต้น หากมีข้อสงสัยหรือความกังวล ควรปรึกษาแพทย์ผู้เชี่ยวชาญ")
